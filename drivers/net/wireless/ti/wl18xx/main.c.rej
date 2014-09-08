@@ -1,0 +1,17 @@
+--- drivers/net/wireless/ti/wl18xx/main.c
++++ drivers/net/wireless/ti/wl18xx/main.c
+@@ -614,9 +614,11 @@
+ 			      WLCORE_QUIRK_NO_SCHED_SCAN_WHILE_CONN |
+ 			      WLCORE_QUIRK_TX_PAD_LAST_FRAME;
+ 
+-		wlcore_set_min_fw_ver(wl, WL18XX_CHIP_VER, WL18XX_IFTYPE_VER,
+-				      WL18XX_MAJOR_VER, WL18XX_SUBTYPE_VER,
+-				      WL18XX_MINOR_VER);
++		wlcore_set_min_fw_ver(wl, WL18XX_CHIP_VER,
++				      WL18XX_IFTYPE_VER,  WL18XX_MAJOR_VER,
++				      WL18XX_SUBTYPE_VER, WL18XX_MINOR_VER,
++				      /* there's no separate multi-role FW */
++				      0, 0, 0, 0);
+ 		break;
+ 	case CHIP_ID_185x_PG10:
+ 		wl1271_warning("chip id 0x%x (185x PG10) is deprecated",
